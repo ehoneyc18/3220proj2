@@ -92,9 +92,9 @@ void threadYield()
 {
   //get the front thread and move it to the back
   //update contexts of new threads with swapcontext
-  Thread *yield = (Thread*) malloc(sizeof(Thread));
+  //Thread *yield = (Thread*) malloc(sizeof(Thread));
 
-  yield = getFromPool(pool);
+  Thread *yield = getFromPool(pool);
 
   //if only main, go to main
   if (yield == NULL)
@@ -110,9 +110,9 @@ void threadJoin(int thread_id, void **result)
 {
   //force calling function to wait until ID'd function is finished
 
-  Thread *found = (Thread*) malloc(sizeof(Thread));
+  //Thread *found = (Thread*) malloc(sizeof(Thread));
 
-  found = getByID(pool, thread_id);
+  Thread *found = getByID(pool, thread_id);
 
   //if the threadID is completely invalid
   if ((!isMember(deadPool, thread_id)) && (!isMember(pool, thread_id)))
@@ -145,9 +145,9 @@ void threadJoin(int thread_id, void **result)
 
 void threadExit(void *result)
 {
-  Thread *del = (Thread*) malloc(sizeof(Thread));
+  //Thread *del = (Thread*) malloc(sizeof(Thread));
 
-  del = getFromPool(pool);
+  Thread *del = getFromPool(pool);
 
   //if the main thread, exit()
   if (del->threadID == 0)
